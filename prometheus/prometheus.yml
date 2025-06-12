@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'gateway'
+    static_configs:
+      - targets: ['gateway-api:8080']
+        labels:
+          service: gateway
+
+  - job_name: 'patient-service'
+    static_configs:
+      - targets: ['patient-service:8081']
+        labels:
+          service: patient-service
+
+  - job_name: 'facturation-service'
+    static_configs:
+      - targets: ['facturation-service:8082']
+        labels:
+          service: facturation-service
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: prometheus
