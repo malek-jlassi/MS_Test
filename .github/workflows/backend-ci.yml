@@ -116,10 +116,11 @@ jobs:
         curl -f http://localhost:9090 || exit 1
         curl -f http://localhost:3000 || exit 1
 
-on_failure:
-  runs-on: ubuntu-latest
-  if: failure()
-  steps:
+  get-logs:
+    if: failure()
+    runs-on: ubuntu-latest
+    needs: [build-and-analyze, deploy, monitoring]
+    steps:
     - uses: actions/checkout@v3
 
     - name: Get logs
