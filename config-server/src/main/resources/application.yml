@@ -10,3 +10,8 @@ management:
       enabled: true
     prometheus:
       enabled: true 
+
+spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
